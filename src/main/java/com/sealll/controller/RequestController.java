@@ -33,6 +33,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 
 /**
@@ -55,9 +56,12 @@ public class RequestController {
     @RequestMapping(value="/post",method = RequestMethod.POST,headers = {
         "content-type=application/json"
     })
-    public Msg getMappingForm(@RequestBody Info info, HttpServletRequest req){
-        logger.info(req.getRemoteAddr());
-        return parseInfoAndRequest(info);
+    public Callable<Msg> getMappingForm(@RequestBody Info info, HttpServletRequest req){
+        Callable<Msg> callable = ()-> {
+            logger.info(req.getRemoteAddr());
+            return parseInfoAndRequest(info);
+        };
+        return callable;
     }
 
     private Msg parseInfoAndRequest(Info info) {

@@ -17,16 +17,16 @@ import java.lang.reflect.InvocationTargetException;
 public class RequestTest {
     @Test
     public void test1() throws IllegalAccessException, IOException, InvocationTargetException {
-        SimpleHttpRequester requester = new SimpleHttpRequester();
-        HttpClientContext httpClientContext = new HttpClientContext();
-        requester.sendFormForText(httpClientContext, "https://vpns.jlu.edu.cn/", "POST",
-                null, null);
-        System.out.println(httpClientContext.getCookieStore().getCookies());
-        String post = requester.sendFormForText(httpClientContext, "https://vpns.jlu.edu.cn/login", "GET",
-                null, null);
-        System.out.println("=========");
-        System.out.println(post);
-        System.out.println("======");
+//        SimpleHttpRequester requester = new SimpleHttpRequester();
+//        HttpClientContext httpClientContext = new HttpClientContext();
+//        requester.sendFormForText(httpClientContext, "https://vpns.jlu.edu.cn/", "POST",
+//                null, null);
+//        System.out.println(httpClientContext.getCookieStore().getCookies());
+//        String post = requester.sendFormForText(httpClientContext, "https://vpns.jlu.edu.cn/login", "GET",
+//                null, null);
+//        System.out.println("=========");
+//        System.out.println(post);
+//        System.out.println("======");
     }
     @Test
     public void test2(){
