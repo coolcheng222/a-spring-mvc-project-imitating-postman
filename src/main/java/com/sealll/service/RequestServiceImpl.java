@@ -42,9 +42,16 @@ public class RequestServiceImpl implements RequestService{
         }
         HttpClientContext context = cookieDao.getContext(info);
 
+        CloseableHttpResponse response;
+        if(info.isJson()){
 
-        CloseableHttpResponse response = requester.sendFormForResponse(context, info.getUrl(), info.getMethod(),
+            response = requester.sendFormForResponse(context, info.getUrl(), info.getMethod(),
                 info.getHeaders(), (info.isJson()) ? map : info.getParams());
+        }else{
+            response = requester.sendJsonForResponse(context, info.getUrl(), info.getMethod(),
+                info.getHeaders(), (info.isJson()) ? map : info.getParams())
+        }
+
         return response;
     }
 }

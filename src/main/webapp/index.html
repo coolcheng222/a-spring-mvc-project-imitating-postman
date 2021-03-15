@@ -10,6 +10,10 @@
     <title>发post</title>
     <link href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="static/js/jquery-1.10.1.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3.0.6/dist/vue.global.js"></script>
+    <script src="static/js/vue/application.js"></script>
+    <script src="static/js/vue/kvarea.js"></script>
     <script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script src="static/js/render.js"></script>
     <script src="static/js/submit.js"></script>
@@ -17,24 +21,21 @@
 </head>
 <body>
 <div id="mainarea">
-
     <form id="post-info" class="form-horizontal">
         <div class="form-group row clearfix" id="row1">
-
-            <select id="method" class="col-sm-1 form-control" name="method">
-                <option value="POST" selected="selected">POST</option>
-                <option value="GET">GET</option>
-                <option value="DELETE">DELETE</option>
-                <option value="PUT">PUT</option>
+            <select id="method" class="col-sm-1 form-control" name="method" v-model="requesting.method">
+                <option v-for="requestmethod in requestmethods" :value="requestmethod" v-text="requestmethod"></option>
             </select>
+
             <label class="col-sm-1 control-label" style="text-align: center" id="urllabel">Url</label>
             <div class=" col-sm-9">
-                <input type="text" class="form-control" name="url" placeholder="URL">
+                <input type="text" class="form-control" v-model="requesting.url" placeholder="URL">
             </div>
         </div>
         <br/>
         <div id="kvarea">
             <ul class="nav nav-tabs">
+                <li v-for="presentation in presentations" @click=""></li>
                 <li role="presentation" id="parameters" class="active nav1"><a href="#">Parameters</a></li>
                 <li role="presentation" id="cookies" class="nav1"><a href="#">COOKIE</a></li>
                 <li role="presentation" id="headers" class="nav1"><a href="#">HEADERS</a></li>

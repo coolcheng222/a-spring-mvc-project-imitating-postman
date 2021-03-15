@@ -5,9 +5,7 @@ $(function(){
     let res = $(".response");
     let kvres = $(".kvs,.response");
     $.each(kvres,function (index,item) {
-        if($(item).attr("display") == "true"){
-
-        }else{
+        if(!($(item).attr("display") === "true")){
             $(item).css("display","none");
         }
     })
